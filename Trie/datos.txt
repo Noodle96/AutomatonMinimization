@@ -1,0 +1,10 @@
+luis 1.80
+carlos 1.70
+andres 1.54
+cuto 1.98
+julia 1.76
+pandemio 1.68 
+andrade 1.87
+angelo 1.73
+suppo 1.77
+javier 1.79

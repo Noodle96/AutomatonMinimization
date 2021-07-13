@@ -10,7 +10,6 @@ int main(){;
     // trie->insert("sat");trie->insert("say");trie->insert("stay");
 
 
-
     // trie->insert("pa");trie->insert("py");
     // trie->insert("ca");trie->insert("cy");
     trie->insert("cat");trie->insert("pa");
@@ -35,7 +34,7 @@ int main(){;
     for(auto it = R.begin() ;it != R.end() ; it++){
         cout << it->first << "=>" << it->second->getValueState() << endl;
     }
-    cout << "MEGE BRANCHS" << endl;
+
 
 
     delete trie;
