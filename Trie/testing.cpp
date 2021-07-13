@@ -73,6 +73,5 @@ int main(){
 
     cout << "sizeof(A): " << sizeof(hash) << endl;
 
-
     return 0;
 }

@@ -104,16 +104,17 @@ void Trie::printPreOrden(NodeTrie *nodeTrie,ostream&file){
 * BUBEMZER MINIMIZATION
 */
 void Trie::minimizeBubenzer(NodeTrie*root,REGISTER &R,STATEMAP &M){
+
     for(auto it = root->children.begin(); it!= root->children.end(); it++){
         //cout << it->first << " " << it->second << endl;
         if(!M[it->second]) minimizeBubenzer(it->second,R,M);
         // t_next = M[t_next]
         it->second = M[it->second];
     }
-    SignatureState ss(root);
-    if(!R[ss]){
+    SignatureState ss(root);//creo las tranciciones salientes FIRMSA
+    if(!R[ss]){//si no existe
         M[root] = R[ss] = root;
-    }else{
+    }else{// si existe
         M[root] = R[ss];
         //cout << "deleting " << root->getValueState() << endl;
         //
