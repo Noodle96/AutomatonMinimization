@@ -34,7 +34,7 @@ int main(){;
     for(auto it = R.begin() ;it != R.end() ; it++){
         cout << it->first << "=>" << it->second->getValueState() << endl;
     }
-
+    cout << "MEGE BRANCHS" << endl;
 
 
     delete trie;
