@@ -1,5 +1,2 @@
 # AutomatonMinimization
-Selene B
-Mayra M
-Jorge T
-Eden P.
+#Esta rama sale error 404 NOT FOUND xd
