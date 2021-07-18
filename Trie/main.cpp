@@ -1,4 +1,5 @@
 #include"trie.h"
+//#include"support.h"
 
 int main(){;
 
@@ -9,10 +10,13 @@ int main(){;
     // trie->insert("rat");trie->insert("ray");
     // trie->insert("sat");trie->insert("say");trie->insert("stay");
 
+    //trie->loadFile("words.txt");
 
-    // trie->insert("pa");trie->insert("py");
+    trie->insert("pa");trie->insert("py");
+    trie->insert("pa");
+
     // trie->insert("ca");trie->insert("cy");
-    trie->insert("cat");trie->insert("pa");
+    //trie->insert("cat");trie->insert("pa");
 
     trie->printTrieConsole();
 
@@ -26,6 +30,7 @@ int main(){;
     trie->minimizeBubenzer(trie->m_pRoot,R,M);
     trie->printTrieConsole("AFDminimozado.png");
 
+    /*
     cout << "Print Map: " << endl;
     for(auto it = M.begin() ;it != M.end() ; it++){
         cout << it->first->getValueState() << "=>" << it->second->getValueState() << endl;
@@ -35,6 +40,7 @@ int main(){;
         cout << it->first << "=>" << it->second->getValueState() << endl;
     }
     cout << "MEGE BRANCHS" << endl;
+    */
 
 
     delete trie;

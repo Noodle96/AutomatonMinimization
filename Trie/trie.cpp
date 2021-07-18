@@ -120,3 +120,15 @@ void Trie::minimizeBubenzer(NodeTrie*root,REGISTER &R,STATEMAP &M){
         //delete root;
     }
 }
+
+void Trie::loadFile(string nameFile){
+    string line;
+    fstream file;
+    file.open(nameFile);
+    while ( getline (file,line) )
+    {
+      //cout << line << endl;
+      insert(line);
+    }
+    file.close();
+}

@@ -1,15 +1,11 @@
 digraph ll {
 	node [shape=Mrecord];
 	R[style=filled, fillcolor="#02ff14", label="{ <data> R | <ew> 0 }"];
-	c[style=filled, fillcolor="", label="{ <data> c | <ew> 0 }"];
-	ca[style=filled, fillcolor="", label="{ <data> ca | <ew> 0 }"];
-	cat[style=filled, fillcolor="#ff31ff", label="{ <data> cat | <ew> 1 }"];
 	p[style=filled, fillcolor="", label="{ <data> p | <ew> 0 }"];
-	cat[style=filled, fillcolor="#ff31ff", label="{ <data> cat | <ew> 1 }"];
+	pa[style=filled, fillcolor="#ff31ff", label="{ <data> pa | <ew> 1 }"];
+	pa[style=filled, fillcolor="#ff31ff", label="{ <data> pa | <ew> 1 }"];
 
-	R:ew:c -> c [label=c];
 	R:ew:c -> p [label=p];
-	c:ew:c -> ca [label=a];
-	p:ew:c -> cat [label=a];
-	ca:ew:c -> cat [label=t];
+	p:ew:c -> pa [label=a];
+	p:ew:c -> pa [label=y];
 }

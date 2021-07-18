@@ -30,10 +30,14 @@ public:
     void printTrieConsole(string str ="AFD.png");
     void printPreOrden(NodeTrie *root, ostream&);
 
+    void loadFile(string namefile);
+
     /**
     * Minimization Bubenzer
     */
     void minimizeBubenzer(NodeTrie*,REGISTER&,STATEMAP&);
+
+    /**/
 };
 
 
