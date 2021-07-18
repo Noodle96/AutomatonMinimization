@@ -1,5 +1,11 @@
 #include"trie.h"
 
+bool Trie::find(std::string word){
+
+}
+
+
+
 
 /**
 * Iterative implementation of insert into trie
@@ -14,6 +20,8 @@ void Trie::insert(std::string word){
       // }
       // std::cout << node->isEndOfWord() << std::endl;
       if ( !node) {
+          //INCREMENT NUMBER NODES
+          m_height ++;
           node = new NodeTrie();
           current->children[ch] = node;
           if(current==m_pRoot){
@@ -116,8 +124,8 @@ void Trie::minimizeBubenzer(NodeTrie*root,REGISTER &R,STATEMAP &M){
     }else{
         M[root] = R[ss];
         //cout << "deleting " << root->getValueState() << endl;
-        //
-        //delete root;
+        m_height--;
+        delete root;
     }
 }
 
@@ -132,3 +140,20 @@ void Trie::loadFile(string nameFile){
     }
     file.close();
 }
+
+/**
+*   FUNCTIONS COUNTS
+*/
+
+// int Trie::countNodes(NodeTrie* nodeTrie){
+//     cout << nodeTrie->getValueState() <<endl;
+//     if(nodeTrie->children.empty()){
+//         //cout << nodeTrie->getValueState() <<endl;
+//         cout << "holassss" << endl;
+//         return 0;
+//     }
+//     for(auto it = nodeTrie->children.begin() ; it!= nodeTrie->children.end();it++ ){
+//         //cout << it->first << " ";
+//         return 1 + countNodes(it->second);
+//     }
+// }

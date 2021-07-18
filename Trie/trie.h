@@ -13,16 +13,21 @@ using STATEMAP = map<NodeTrie*,NodeTrie*>;
 class Trie{
 public:
     NodeTrie *m_pRoot;
+    int m_height;
 public:
     Trie(){
         m_pRoot = new NodeTrie();
+        m_height =1;
     }
     ~Trie(){delete m_pRoot;}
+
+    int getHeight(){return m_height;}
 
     /**
     * Iterative implementation of insert into trie
     */
     void insert(std::string word);
+    bool find(std::string word);
     void countNumnerosNodos(){;}
 
 
@@ -37,7 +42,10 @@ public:
     */
     void minimizeBubenzer(NodeTrie*,REGISTER&,STATEMAP&);
 
-    /**/
+    /*
+    *   functions count
+    */
+    int countNodes(NodeTrie*);
 };
 
 

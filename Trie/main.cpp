@@ -10,25 +10,36 @@ int main(){;
     // trie->insert("rat");trie->insert("ray");
     // trie->insert("sat");trie->insert("say");trie->insert("stay");
 
-    //trie->loadFile("words.txt");
 
-    trie->insert("pa");trie->insert("py");
-    trie->insert("pa");
-
+    /*
+        INSERT MANUAL OR LOAD FILE
+    */
+    trie->loadFile("words.txt");
+    // trie->loadFile("integrantes.txt");
+    // trie->insert("pa");trie->insert("py");
     // trie->insert("ca");trie->insert("cy");
-    //trie->insert("cat");trie->insert("pa");
+    // trie->insert("py");trie->insert("pa");
 
     trie->printTrieConsole();
+
+    //CALL FUNCTION countNodes
+    // before minimize
+    cout << "# NODOS INICIALES: "<<trie->getHeight() << endl;
 
     // fstream file;
     // file.open("test.txt",ios::app);
     // trie->printPreOrden(trie->m_pRoot,file);
 
+
+    //MINIIZAR EL TRIE CON EL ALGORITMO DE BUBENZER
     REGISTER R;
     STATEMAP M;
-
     trie->minimizeBubenzer(trie->m_pRoot,R,M);
+
+    // UNA VEZ LLAMADA A BUBENZER EL NUMERO DE NODOS REDUCIRA
     trie->printTrieConsole("AFDminimozado.png");
+    cout << "# NODOS FINALES: "<<trie->getHeight() << endl;
+
 
     /*
     cout << "Print Map: " << endl;
