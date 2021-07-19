@@ -13,16 +13,21 @@ using STATEMAP = map<NodeTrie*,NodeTrie*>;
 class Trie{
 public:
     NodeTrie *m_pRoot;
+    int m_height;
 public:
     Trie(){
         m_pRoot = new NodeTrie();
+        m_height =1;
     }
     ~Trie(){delete m_pRoot;}
+
+    int getHeight(){return m_height;}
 
     /**
     * Iterative implementation of insert into trie
     */
     void insert(std::string word);
+    bool search(std::string word);
     void countNumnerosNodos(){;}
 
 
@@ -30,10 +35,19 @@ public:
     void printTrieConsole(string str ="AFD.png");
     void printPreOrden(NodeTrie *root, ostream&);
 
+    void loadFile(string namefile);
+    void verifyFile(string namefile);
+
     /**
     * Minimization Bubenzer
     */
     void minimizeBubenzer(NodeTrie*,REGISTER&,STATEMAP&);
+
+    /*
+    *   functions count
+    */
+    void mapearTrie(NodeTrie*,map<NodeTrie*,int>&);
+    int countNodosAceptados();
 };
 
 

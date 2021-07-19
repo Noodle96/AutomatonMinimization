@@ -38,7 +38,6 @@ int main(){
     }
 
 
-
     //testing map[(),(),()] = node
     map< list< pair<int,int> >, string  > mapLS_S;
     map<int ,int> map_ints;
@@ -69,10 +68,26 @@ int main(){
     listaPads.push_back(10);listaPads.push_back(20);
     listaPads.push_back(30);listaPads.push_back(40);
     listaPads.push_back(50);listaPads.push_back(60);
-    
+
     int *pointer_b;
 
     cout << "sizeof(A): " << sizeof(hash) << endl;
+
+    map<string,int> mapWords;
+    string line;
+    fstream file;
+    file.open("words.txt");
+    while ( getline (file,line) )
+    {
+      //
+      //cout << line << endl;
+      mapWords[line]++;
+    }
+    file.close();
+    cout << "printMap" << endl;
+    for(auto it = mapWords.begin() ; it!= mapWords.end(); it++){
+        cout << it->first << " " << it->second << endl;
+    }
 
     return 0;
 }

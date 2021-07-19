@@ -1,5 +1,24 @@
 #include"trie.h"
 
+/**
+ * Iterative implementation of search into trie.
+ */
+bool Trie::search(std::string word){
+    NodeTrie *current = m_pRoot;
+    for (int i = 0; i < word.length(); i++) {
+        char ch = word[i];
+        NodeTrie *node = current->children[ch];
+        //if node does not exist for given char then return false
+        if (!node) {
+            return false;
+        }
+        current = node;
+    }
+    //return true of current's endOfWord is true else return false.
+    return current->isEndOfWord();
+}
+
+
 
 /**
 * Iterative implementation of insert into trie
@@ -14,6 +33,8 @@ void Trie::insert(std::string word){
       // }
       // std::cout << node->isEndOfWord() << std::endl;
       if ( !node) {
+          //INCREMENT NUMBER NODES
+          m_height ++;
           node = new NodeTrie();
           current->children[ch] = node;
           if(current==m_pRoot){
@@ -104,20 +125,75 @@ void Trie::printPreOrden(NodeTrie *nodeTrie,ostream&file){
 * BUBEMZER MINIMIZATION
 */
 void Trie::minimizeBubenzer(NodeTrie*root,REGISTER &R,STATEMAP &M){
-
     for(auto it = root->children.begin(); it!= root->children.end(); it++){
         //cout << it->first << " " << it->second << endl;
         if(!M[it->second]) minimizeBubenzer(it->second,R,M);
         // t_next = M[t_next]
         it->second = M[it->second];
     }
-    SignatureState ss(root);//creo las tranciciones salientes FIRMSA
-    if(!R[ss]){//si no existe
+    SignatureState ss(root);
+    if(!R[ss]){
         M[root] = R[ss] = root;
-    }else{// si existe
+    }else{
         M[root] = R[ss];
         //cout << "deleting " << root->getValueState() << endl;
-        //
-        //delete root;
+        m_height--;
+        delete root;
     }
+}
+
+void Trie::loadFile(string nameFile){
+    cout << "CARGANDO TRIE CON EL ARCHIVO " << nameFile << endl;
+    string line;
+    fstream file;
+    file.open(nameFile);
+    while ( getline (file,line) )
+    {
+      //cout << line << endl;
+      insert(line);
+    }
+    file.close();
+}
+
+/*
+*   LEEREMOS PALABRA POR PALABRA DEL ARCHIVO 'namefile' Y VERIFICAREMOS EN EL
+*   TRIE SI ES QUE ESTA O NO
+*/
+void Trie::verifyFile(string nameFile){
+    cout << "LEENDO Y VERIFICANDO EL ARCHIVO: " << nameFile <<"\n";
+    string line;
+    fstream file;
+    file.open(nameFile);
+    while ( getline (file,line) )
+    {
+        if(!search(line))
+            cout << "La palabra " << line << " no fue encontrada\n";
+    }
+    file.close();
+}
+
+
+
+/**
+*   FUNCTIONS COUNTS
+*/
+
+void Trie::mapearTrie(NodeTrie* nodeTrie,map<NodeTrie*,int>&M){
+    if(!M[nodeTrie]) M[nodeTrie]++;
+    for(auto it = nodeTrie->children.begin() ; it!= nodeTrie->children.end();it++ ){
+        //cout << it->first << " ";
+        mapearTrie(it->second,M);
+    }
+}
+
+
+int Trie::countNodosAceptados(){
+    map<NodeTrie*,int> trieMapeado;
+    int cont = 0;
+    mapearTrie(m_pRoot,trieMapeado);
+    for(auto it = trieMapeado.begin() ; it!= trieMapeado.end(); it++){
+        //cout << it->first->getValueState() << " => " << it->second <<endl;
+        if(it->first->isEndOfWord()) cont++;
+    }
+    return cont;
 }
