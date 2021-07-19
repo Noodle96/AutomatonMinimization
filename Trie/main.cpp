@@ -14,11 +14,11 @@ int main(){;
     /*
         INSERT MANUAL OR LOAD FILE
     */
-    //trie->loadFile("words.txt");
+    trie->loadFile("words.txt");
     // trie->loadFile("integrantes.txt");
     // trie->insert("pa");trie->insert("py");
-    trie->insert("ca");trie->insert("cy");
-    trie->insert("py");trie->insert("pa");
+    // trie->insert("ca");trie->insert("cy");
+    // trie->insert("py");trie->insert("pa");
 
     trie->printTrieConsole();
 
@@ -40,7 +40,7 @@ int main(){;
     trie->printTrieConsole("AFDminimozado.png");
     cout << "# NODOS FINALES: "<<trie->getHeight() << endl;
 
-    //trie->verifyFile("words.txt");
+    //trie->verifyFile("words_copy.txt");
 
     /*
     cout << "Print Map: " << endl;
@@ -59,7 +59,7 @@ int main(){;
     *   DESPUES DE MINIMIZAR EL TRIE, LEEREMOS EL MISMO ARCHIVO PARA VER SI
     +   LA ESTRUCTURA TRIE FUE DISTORSIONADA
     */
-    //trie->verifyFile("words.txt");
+    trie->verifyFile("words.txt");
     //trie->verifyFile("words_copy.txt");
 
 
