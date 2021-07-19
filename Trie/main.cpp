@@ -49,7 +49,7 @@ int main(){;
 
 
     //CONTABILIZANDO LOS NODOS ACEPTADOS DESPUES DE MINIMIZAR
-    cout <<"# DE NODOS ACEPTADOS ANTES DE MINIMIZAR: " <<trie->countNodosAceptados() << endl;
+    cout <<"# DE NODOS ACEPTADOS DESPUES DE MINIMIZAR: " <<trie->countNodosAceptados() << endl;
 
     //trie->verifyFile("words_copy.txt");
 
