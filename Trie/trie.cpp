@@ -143,6 +143,7 @@ void Trie::minimizeBubenzer(NodeTrie*root,REGISTER &R,STATEMAP &M){
 }
 
 void Trie::loadFile(string nameFile){
+    cout << "CARGANDO TRIE CON EL ARCHIVO " << nameFile << endl;
     string line;
     fstream file;
     file.open(nameFile);
@@ -177,15 +178,22 @@ void Trie::verifyFile(string nameFile){
 *   FUNCTIONS COUNTS
 */
 
-// int Trie::countNodes(NodeTrie* nodeTrie){
-//     cout << nodeTrie->getValueState() <<endl;
-//     if(nodeTrie->children.empty()){
-//         //cout << nodeTrie->getValueState() <<endl;
-//         cout << "holassss" << endl;
-//         return 0;
-//     }
-//     for(auto it = nodeTrie->children.begin() ; it!= nodeTrie->children.end();it++ ){
-//         //cout << it->first << " ";
-//         return 1 + countNodes(it->second);
-//     }
-// }
+void Trie::mapearTrie(NodeTrie* nodeTrie,map<NodeTrie*,int>&M){
+    if(!M[nodeTrie]) M[nodeTrie]++;
+    for(auto it = nodeTrie->children.begin() ; it!= nodeTrie->children.end();it++ ){
+        //cout << it->first << " ";
+        mapearTrie(it->second,M);
+    }
+}
+
+
+int Trie::countNodosAceptados(){
+    map<NodeTrie*,int> trieMapeado;
+    int cont = 0;
+    mapearTrie(m_pRoot,trieMapeado);
+    for(auto it = trieMapeado.begin() ; it!= trieMapeado.end(); it++){
+        //cout << it->first->getValueState() << " => " << it->second <<endl;
+        if(it->first->isEndOfWord()) cont++;
+    }
+    return cont;
+}

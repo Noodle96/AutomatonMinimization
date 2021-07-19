@@ -1,5 +1,6 @@
 #include"trie.h"
 //#include"support.h"
+using MAP = map<NodeTrie*,int>;
 
 int main(){;
 
@@ -20,11 +21,16 @@ int main(){;
     // trie->insert("ca");trie->insert("cy");
     // trie->insert("py");trie->insert("pa");
 
+    //print png trie
     trie->printTrieConsole();
 
     //CALL FUNCTION countNodes
     // before minimize
     cout << "# NODOS INICIALES: "<<trie->getHeight() << endl;
+
+    //CONTABILIZANDO LOS NODOS ACEPTADOS ANTES DE MINIMIZAR
+    cout <<"# DE NODOS ACEPTADOS ANTES DE MINIMIZAR: " <<trie->countNodosAceptados() << endl;
+
 
     // fstream file;
     // file.open("test.txt",ios::app);
@@ -32,6 +38,7 @@ int main(){;
 
 
     //MINIIZAR EL TRIE CON EL ALGORITMO DE BUBENZER
+    cout << "MINIMIZANDO.." << endl;
     REGISTER R;
     STATEMAP M;
     trie->minimizeBubenzer(trie->m_pRoot,R,M);
@@ -39,6 +46,10 @@ int main(){;
     // UNA VEZ LLAMADA A BUBENZER EL NUMERO DE NODOS REDUCIRA
     trie->printTrieConsole("AFDminimozado.png");
     cout << "# NODOS FINALES: "<<trie->getHeight() << endl;
+
+
+    //CONTABILIZANDO LOS NODOS ACEPTADOS DESPUES DE MINIMIZAR
+    cout <<"# DE NODOS ACEPTADOS ANTES DE MINIMIZAR: " <<trie->countNodosAceptados() << endl;
 
     //trie->verifyFile("words_copy.txt");
 
@@ -64,6 +75,11 @@ int main(){;
 
 
 
+
+    /*
+    *   count nodos aceptados
+    */
+    // cout << trie->countNodosAceptados() << endl;
 
 
 

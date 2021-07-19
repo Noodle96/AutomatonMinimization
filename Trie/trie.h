@@ -46,7 +46,8 @@ public:
     /*
     *   functions count
     */
-    int countNodes(NodeTrie*);
+    void mapearTrie(NodeTrie*,map<NodeTrie*,int>&);
+    int countNodosAceptados();
 };
 
 
