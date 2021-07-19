@@ -1,9 +1,22 @@
 #include"trie.h"
 
-bool Trie::find(std::string word){
-
+/**
+ * Iterative implementation of search into trie.
+ */
+bool Trie::search(std::string word){
+    NodeTrie *current = m_pRoot;
+    for (int i = 0; i < word.length(); i++) {
+        char ch = word[i];
+        NodeTrie *node = current->children[ch];
+        //if node does not exist for given char then return false
+        if (!node) {
+            return false;
+        }
+        current = node;
+    }
+    //return true of current's endOfWord is true else return false.
+    return current->isEndOfWord();
 }
-
 
 
 
@@ -140,6 +153,25 @@ void Trie::loadFile(string nameFile){
     }
     file.close();
 }
+
+/*
+*   LEEREMOS PALABRA POR PALABRA DEL ARCHIVO 'namefile' Y VERIFICAREMOS EN EL
+*   TRIE SI ES QUE ESTA O NO
+*/
+void Trie::verifyFile(string nameFile){
+    cout << "LEENDO Y VERIFICANDO EL ARCHIVO: " << nameFile <<"\n";
+    string line;
+    fstream file;
+    file.open(nameFile);
+    while ( getline (file,line) )
+    {
+        if(!search(line))
+            cout << "La palabra " << line << " no fue encontrada\n";
+    }
+    file.close();
+}
+
+
 
 /**
 *   FUNCTIONS COUNTS

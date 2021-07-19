@@ -27,7 +27,7 @@ public:
     * Iterative implementation of insert into trie
     */
     void insert(std::string word);
-    bool find(std::string word);
+    bool search(std::string word);
     void countNumnerosNodos(){;}
 
 
@@ -36,6 +36,7 @@ public:
     void printPreOrden(NodeTrie *root, ostream&);
 
     void loadFile(string namefile);
+    void verifyFile(string namefile);
 
     /**
     * Minimization Bubenzer
