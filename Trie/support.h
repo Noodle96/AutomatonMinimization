@@ -12,8 +12,4 @@ void loadFile(string nameFile){
     file.close();
 }
 
-
-
-
-
 #endif // SUPPORT_H
